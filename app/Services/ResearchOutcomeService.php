@@ -8,7 +8,7 @@ class ResearchOutcomeService extends BaseService
 {
     public function __construct(ResearchOutcomeRepository $researchOutcomeRepository)
     {
-        $this->repository = $researchOutcomeRepository;
+        parent::__construct($researchOutcomeRepository);
     }
 
     public function rules($action = "store"): array

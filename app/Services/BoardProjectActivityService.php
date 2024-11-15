@@ -8,7 +8,7 @@ class BoardProjectActivityService extends BaseService
 {
     public function __construct(BoardProjectActivityRepository $boardProjectActivityRepository)
     {
-        $this->repository = $boardProjectActivityRepository;
+        parent::__construct($boardProjectActivityRepository);
     }
 
     public function rules($action = "store"): array

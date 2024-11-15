@@ -8,7 +8,7 @@ class ProcuredMaterialService extends BaseService
 {
     public function __construct(ProcuredMaterialRepository $procuredMaterialRepository)
     {
-        $this->repository = $procuredMaterialRepository;
+        parent::__construct($procuredMaterialRepository);
     }
 
     public function rules($action = "store"): array

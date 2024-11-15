@@ -8,7 +8,7 @@ class LifServiceCategoryService extends BaseService
 {
     public function __construct(LifServiceCategoryRepository $lifServiceCategoryRepository)
     {
-        $this->repository = $lifServiceCategoryRepository;
+        parent::__construct($lifServiceCategoryRepository);
     }
 
     public function rules($action = "store"): array

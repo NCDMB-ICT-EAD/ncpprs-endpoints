@@ -3,10 +3,16 @@
 namespace App\Services;
 
 use App\Interfaces\IService;
+use App\Repositories\BaseRepository;
 
 abstract class BaseService implements IService
 {
-    protected $repository;
+    protected BaseRepository $repository;
+
+    public function __construct(BaseRepository $repository)
+    {
+        $this->repository = $repository;
+    }
 
     public function generate(string $column, string $prefix)
     {

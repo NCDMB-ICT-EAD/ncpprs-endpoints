@@ -8,7 +8,7 @@ class ResearchDisseminationService extends BaseService
 {
     public function __construct(ResearchDisseminationRepository $researchDisseminationRepository)
     {
-        $this->repository = $researchDisseminationRepository;
+        parent::__construct($researchDisseminationRepository);
     }
 
     public function rules($action = "store"): array

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ResearchBudgetResource;
 use App\Services\ResearchBudgetService;
 
-class ResearchBudgetController extends Controller
+class ResearchBudgetController extends BaseController
 {
     public function __construct(ResearchBudgetService $researchBudgetService) {
-        $this->service = $researchBudgetService;
-        $this->name = 'ResearchBudget';
+        parent::__construct($researchBudgetService, 'ResearchBudget', ResearchBudgetResource::class);
     }
 }

@@ -8,7 +8,7 @@ class EQSuccessionPlanService extends BaseService
 {
     public function __construct(EQSuccessionPlanRepository $eQSuccessionPlanRepository)
     {
-        $this->repository = $eQSuccessionPlanRepository;
+        parent::__construct($eQSuccessionPlanRepository);
     }
 
     public function rules($action = "store"): array

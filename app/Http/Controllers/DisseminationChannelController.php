@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\DisseminationChannelResource;
 use App\Services\DisseminationChannelService;
 
-class DisseminationChannelController extends Controller
+class DisseminationChannelController extends BaseController
 {
     public function __construct(DisseminationChannelService $disseminationChannelService) {
-        $this->service = $disseminationChannelService;
-        $this->name = 'DisseminationChannel';
+        parent::__construct($disseminationChannelService, 'DisseminationChannel', DisseminationChannelResource::class);
     }
 }

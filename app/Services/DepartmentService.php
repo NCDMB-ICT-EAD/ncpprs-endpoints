@@ -8,7 +8,7 @@ class DepartmentService extends BaseService
 {
     public function __construct(DepartmentRepository $departmentRepository)
     {
-        $this->repository = $departmentRepository;
+        parent::__construct($departmentRepository);
     }
 
     public function rules($action = "store"): array

@@ -8,7 +8,7 @@ class EQApprovalService extends BaseService
 {
     public function __construct(EQApprovalRepository $eQApprovalRepository)
     {
-        $this->repository = $eQApprovalRepository;
+        parent::__construct($eQApprovalRepository);
     }
 
     public function rules($action = "store")

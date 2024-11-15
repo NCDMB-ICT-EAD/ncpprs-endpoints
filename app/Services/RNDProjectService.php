@@ -8,7 +8,7 @@ class RNDProjectService extends BaseService
 {
     public function __construct(RNDProjectRepository $rNDProjectRepository)
     {
-        $this->repository = $rNDProjectRepository;
+        parent::__construct($rNDProjectRepository);
     }
 
     public function rules($action = "store"): array

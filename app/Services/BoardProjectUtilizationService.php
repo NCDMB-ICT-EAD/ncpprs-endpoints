@@ -8,7 +8,7 @@ class BoardProjectUtilizationService extends BaseService
 {
     public function __construct(BoardProjectUtilizationRepository $boardProjectUtilizationRepository)
     {
-        $this->repository = $boardProjectUtilizationRepository;
+        parent::__construct($boardProjectUtilizationRepository);
     }
 
     public function rules($action = "store"): array

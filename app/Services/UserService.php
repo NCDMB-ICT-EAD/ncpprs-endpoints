@@ -8,7 +8,7 @@ class UserService extends BaseService
 {
     public function __construct(UserRepository $userRepository)
     {
-        $this->repository = $userRepository;
+        parent::__construct($userRepository);
     }
 
     public function rules($action = "store")

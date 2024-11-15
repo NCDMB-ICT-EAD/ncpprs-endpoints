@@ -8,7 +8,7 @@ class ReviewService extends BaseService
 {
     public function __construct(ReviewRepository $reviewRepository)
     {
-        $this->repository = $reviewRepository;
+        parent::__construct($reviewRepository);
     }
 
     public function rules($action = "store"): array

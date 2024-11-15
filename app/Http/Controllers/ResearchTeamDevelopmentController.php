@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ResearchTeamDevelopmentResource;
 use App\Services\ResearchTeamDevelopmentService;
 
-class ResearchTeamDevelopmentController extends Controller
+class ResearchTeamDevelopmentController extends BaseController
 {
     public function __construct(ResearchTeamDevelopmentService $researchTeamDevelopmentService) {
-        $this->service = $researchTeamDevelopmentService;
-        $this->name = 'ResearchTeamDevelopment';
+        parent::__construct($researchTeamDevelopmentService, 'ResearchTeamDevelopment', ResearchTeamDevelopmentResource::class);
     }
 }

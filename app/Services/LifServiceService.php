@@ -8,7 +8,7 @@ class LifServiceService extends BaseService
 {
     public function __construct(LifServiceRepository $lifServiceRepository)
     {
-        $this->repository = $lifServiceRepository;
+        parent::__construct($lifServiceRepository);
     }
 
     public function rules($action = "store"): array

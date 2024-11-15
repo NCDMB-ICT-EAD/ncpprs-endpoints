@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ReviewResource;
 use App\Services\ReviewService;
 
-class ReviewController extends Controller
+class ReviewController extends BaseController
 {
     public function __construct(ReviewService $reviewService) {
-        $this->service = $reviewService;
-        $this->name = 'Review';
+        parent::__construct($reviewService, 'Review', ReviewResource::class);
     }
 }

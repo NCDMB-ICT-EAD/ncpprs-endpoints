@@ -39,6 +39,7 @@ class GenerateResource extends Command
             $createdFiles[] = $this->createService($name);
             $createdFiles[] = $this->createProvider($name);
             $createdFiles[] = $this->createController($name);
+            $createdFiles[] = $this->createResource($name);
 
             $this->info("All resources created successfully.");
 
@@ -109,6 +110,13 @@ class GenerateResource extends Command
         $this->checkAndSaveFile($modelPath, 'model', $formatted);
 
         return $modelPath;
+    }
+
+    protected function createResource($name): string
+    {
+        $formatted = $this->parse($name);
+        $this->call('make:resource', ['name' => "{$formatted['class']}Resource"]);
+        return app_path("Resources/{$formatted['class']}Resource.php");
     }
 
     protected function createMigration($name): string

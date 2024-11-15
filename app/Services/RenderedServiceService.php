@@ -8,7 +8,7 @@ class RenderedServiceService extends BaseService
 {
     public function __construct(RenderedServiceRepository $renderedServiceRepository)
     {
-        $this->repository = $renderedServiceRepository;
+        parent::__construct($renderedServiceRepository);
     }
 
     public function rules($action = "store"): array

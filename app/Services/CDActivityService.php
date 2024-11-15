@@ -8,7 +8,7 @@ class CDActivityService extends BaseService
 {
     public function __construct(CDActivityRepository $cDActivityRepository)
     {
-        $this->repository = $cDActivityRepository;
+        parent::__construct($cDActivityRepository);
     }
 
     public function rules($action = "store"): array

@@ -8,7 +8,7 @@ class VesselService extends BaseService
 {
     public function __construct(VesselRepository $vesselRepository)
     {
-        $this->repository = $vesselRepository;
+        parent::__construct($vesselRepository);
     }
 
     public function rules($action = "store"): array

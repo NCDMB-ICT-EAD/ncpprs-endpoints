@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\EQEmployeeResource;
 use App\Services\EQEmployeeService;
 
-class EQEmployeeController extends Controller
+class EQEmployeeController extends BaseController
 {
     public function __construct(EQEmployeeService $eQEmployeeService) {
-        $this->service = $eQEmployeeService;
-        $this->name = 'EQEmployee';
+        parent::__construct($eQEmployeeService, 'EQEmployee', EQEmployeeResource::class);
     }
 }

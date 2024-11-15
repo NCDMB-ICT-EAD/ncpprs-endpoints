@@ -8,7 +8,7 @@ class MaterialTypeService extends BaseService
 {
     public function __construct(MaterialTypeRepository $materialTypeRepository)
     {
-        $this->repository = $materialTypeRepository;
+        parent::__construct($materialTypeRepository);
     }
 
     public function rules($action = "store"): array

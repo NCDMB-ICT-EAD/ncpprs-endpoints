@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\BoardProjectResource;
 use App\Services\BoardProjectService;
 
-class BoardProjectController extends Controller
+class BoardProjectController extends BaseController
 {
     public function __construct(BoardProjectService $boardProjectService) {
-        $this->service = $boardProjectService;
-        $this->name = 'BoardProject';
+        parent::__construct($boardProjectService, 'Board Project Services', BoardProjectResource::class);
     }
 }

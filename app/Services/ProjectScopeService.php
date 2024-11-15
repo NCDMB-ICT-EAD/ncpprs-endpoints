@@ -8,7 +8,7 @@ class ProjectScopeService extends BaseService
 {
     public function __construct(ProjectScopeRepository $projectScopeRepository)
     {
-        $this->repository = $projectScopeRepository;
+        parent::__construct($projectScopeRepository);
     }
 
     public function rules($action = "store"): array

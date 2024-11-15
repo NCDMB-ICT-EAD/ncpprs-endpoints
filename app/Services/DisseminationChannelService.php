@@ -8,7 +8,7 @@ class DisseminationChannelService extends BaseService
 {
     public function __construct(DisseminationChannelRepository $disseminationChannelRepository)
     {
-        $this->repository = $disseminationChannelRepository;
+        parent::__construct($disseminationChannelRepository);
     }
 
     public function rules($action = "store"): array

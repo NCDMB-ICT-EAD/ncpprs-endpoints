@@ -13,7 +13,7 @@ class ResearchOutcomeServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         // Bind the ResearchOutcomeRepository to ResearchOutcomeService
         $this->app->bind(ResearchOutcomeService::class, function ($app) {

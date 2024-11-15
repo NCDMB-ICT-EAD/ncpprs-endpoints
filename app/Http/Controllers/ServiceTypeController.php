@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ServiceTypeResource;
 use App\Services\ServiceTypeService;
 
-class ServiceTypeController extends Controller
+class ServiceTypeController extends BaseController
 {
     public function __construct(ServiceTypeService $serviceTypeService) {
-        $this->service = $serviceTypeService;
-        $this->name = 'ServiceType';
+        parent::__construct($serviceTypeService, 'ServiceType', ServiceTypeResource::class);
     }
 }

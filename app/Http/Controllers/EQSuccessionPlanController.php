@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\EQSuccessionPlanResource;
 use App\Services\EQSuccessionPlanService;
 
-class EQSuccessionPlanController extends Controller
+class EQSuccessionPlanController extends BaseController
 {
     public function __construct(EQSuccessionPlanService $eQSuccessionPlanService) {
-        $this->service = $eQSuccessionPlanService;
-        $this->name = 'EQSuccessionPlan';
+        parent::__construct($eQSuccessionPlanService, 'EQSuccessionPlan', EQSuccessionPlanResource::class);
     }
 }

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\LifInstitutionServiceResource;
 use App\Services\LifInstitutionServiceService;
 
-class LifInstitutionServiceController extends Controller
+class LifInstitutionServiceController extends BaseController
 {
     public function __construct(LifInstitutionServiceService $lifInstitutionServiceService) {
-        $this->service = $lifInstitutionServiceService;
-        $this->name = 'LifInstitutionService';
+        parent::__construct($lifInstitutionServiceService, 'LifInstitutionService', LifInstitutionServiceResource::class);
     }
 }

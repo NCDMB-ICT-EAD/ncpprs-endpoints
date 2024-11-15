@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProcuredMaterialResource;
 use App\Services\ProcuredMaterialService;
 
-class ProcuredMaterialController extends Controller
+class ProcuredMaterialController extends BaseController
 {
     public function __construct(ProcuredMaterialService $procuredMaterialService) {
-        $this->service = $procuredMaterialService;
-        $this->name = 'ProcuredMaterial';
+        parent::__construct($procuredMaterialService, 'ProcuredMaterial', ProcuredMaterialResource::class);
     }
 }

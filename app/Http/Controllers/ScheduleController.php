@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ScheduleResource;
 use App\Services\ScheduleService;
 
-class ScheduleController extends Controller
+class ScheduleController extends BaseController
 {
     public function __construct(ScheduleService $scheduleService) {
-        $this->service = $scheduleService;
-        $this->name = 'Schedule';
+        parent::__construct($scheduleService, 'Schedule', ScheduleResource::class);
     }
 }

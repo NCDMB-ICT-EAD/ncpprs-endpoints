@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\VesselResource;
 use App\Services\VesselService;
 
-class VesselController extends Controller
+class VesselController extends BaseController
 {
     public function __construct(VesselService $vesselService) {
-        $this->service = $vesselService;
-        $this->name = 'Vessel';
+        parent::__construct($vesselService, 'Vessel', VesselResource::class);
     }
 }

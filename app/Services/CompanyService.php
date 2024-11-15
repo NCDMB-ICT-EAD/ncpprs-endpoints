@@ -8,7 +8,7 @@ class CompanyService extends BaseService
 {
     public function __construct(CompanyRepository $companyRepository)
     {
-        $this->repository = $companyRepository;
+        parent::__construct($companyRepository);
     }
 
     public function rules($action = "store"): array

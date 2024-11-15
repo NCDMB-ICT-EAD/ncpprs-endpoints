@@ -8,7 +8,7 @@ class ScheduleService extends BaseService
 {
     public function __construct(ScheduleRepository $scheduleRepository)
     {
-        $this->repository = $scheduleRepository;
+        parent::__construct($scheduleRepository);
     }
 
     public function rules($action = "store"): array

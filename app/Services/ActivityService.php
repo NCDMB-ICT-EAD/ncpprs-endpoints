@@ -8,7 +8,7 @@ class ActivityService extends BaseService
 {
     public function __construct(ActivityRepository $activityRepository)
     {
-        $this->repository = $activityRepository;
+        parent::__construct($activityRepository);
     }
 
     public function rules($action = "store"): array

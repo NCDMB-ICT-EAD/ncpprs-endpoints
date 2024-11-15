@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProjectScopeResource;
 use App\Services\ProjectScopeService;
 
-class ProjectScopeController extends Controller
+class ProjectScopeController extends BaseController
 {
     public function __construct(ProjectScopeService $projectScopeService) {
-        $this->service = $projectScopeService;
-        $this->name = 'ProjectScope';
+        parent::__construct($projectScopeService, 'ProjectScope', ProjectScopeResource::class);
     }
 }

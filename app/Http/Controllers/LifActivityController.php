@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\LifActivityResource;
 use App\Services\LifActivityService;
 
-class LifActivityController extends Controller
+class LifActivityController extends BaseController
 {
     public function __construct(LifActivityService $lifActivityService) {
-        $this->service = $lifActivityService;
-        $this->name = 'LifActivity';
+        parent::__construct($lifActivityService, 'LifActivity', LifActivityResource::class);
     }
 }

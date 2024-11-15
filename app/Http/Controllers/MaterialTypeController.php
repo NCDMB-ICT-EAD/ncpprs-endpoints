@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\MaterialTypeResource;
 use App\Services\MaterialTypeService;
 
-class MaterialTypeController extends Controller
+class MaterialTypeController extends BaseController
 {
     public function __construct(MaterialTypeService $materialTypeService) {
-        $this->service = $materialTypeService;
-        $this->name = 'MaterialType';
+        parent::__construct($materialTypeService, 'MaterialType', MaterialTypeResource::class);
     }
 }

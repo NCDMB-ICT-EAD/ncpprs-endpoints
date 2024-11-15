@@ -8,7 +8,7 @@ class ServiceTypeService extends BaseService
 {
     public function __construct(ServiceTypeRepository $serviceTypeRepository)
     {
-        $this->repository = $serviceTypeRepository;
+        parent::__construct($serviceTypeRepository);
     }
 
     public function rules($action = "store"): array

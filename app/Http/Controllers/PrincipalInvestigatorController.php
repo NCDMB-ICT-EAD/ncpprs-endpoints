@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PrincipalInvestigatorResource;
 use App\Services\PrincipalInvestigatorService;
 
-class PrincipalInvestigatorController extends Controller
+class PrincipalInvestigatorController extends BaseController
 {
     public function __construct(PrincipalInvestigatorService $principalInvestigatorService) {
-        $this->service = $principalInvestigatorService;
-        $this->name = 'PrincipalInvestigator';
+        parent::__construct($principalInvestigatorService, 'PrincipalInvestigator', PrincipalInvestigatorResource::class);
     }
 }

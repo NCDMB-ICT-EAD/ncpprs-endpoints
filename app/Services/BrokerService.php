@@ -8,7 +8,7 @@ class BrokerService extends BaseService
 {
     public function __construct(BrokerRepository $brokerRepository)
     {
-        $this->repository = $brokerRepository;
+        parent::__construct($brokerRepository);
     }
 
     public function rules($action = "store"): array

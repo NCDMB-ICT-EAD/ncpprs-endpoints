@@ -8,7 +8,7 @@ class PrincipalInvestigatorService extends BaseService
 {
     public function __construct(PrincipalInvestigatorRepository $principalInvestigatorRepository)
     {
-        $this->repository = $principalInvestigatorRepository;
+        parent::__construct($principalInvestigatorRepository);
     }
 
     public function rules($action = "store"): array

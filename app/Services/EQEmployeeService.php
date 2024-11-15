@@ -8,7 +8,7 @@ class EQEmployeeService extends BaseService
 {
     public function __construct(EQEmployeeRepository $eQEmployeeRepository)
     {
-        $this->repository = $eQEmployeeRepository;
+        parent::__construct($eQEmployeeRepository);
     }
 
     public function rules($action = "store"): array

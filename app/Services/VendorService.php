@@ -8,7 +8,7 @@ class VendorService extends BaseService
 {
     public function __construct(VendorRepository $vendorRepository)
     {
-        $this->repository = $vendorRepository;
+        parent::__construct($vendorRepository);
     }
 
     public function rules($action = "store"): array

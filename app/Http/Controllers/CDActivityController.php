@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CDActivityResource;
 use App\Services\CDActivityService;
 
-class CDActivityController extends Controller
+class CDActivityController extends BaseController
 {
     public function __construct(CDActivityService $cDActivityService) {
-        $this->service = $cDActivityService;
-        $this->name = 'CDActivity';
+        parent::__construct($cDActivityService, 'CDActivity', CDActivityResource::class);
     }
 }

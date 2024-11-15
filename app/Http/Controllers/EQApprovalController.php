@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\EQApprovalResource;
 use App\Services\EQApprovalService;
 
-class EQApprovalController extends Controller
+class EQApprovalController extends BaseController
 {
     public function __construct(EQApprovalService $eQApprovalService) {
-        $this->service = $eQApprovalService;
-        $this->name = 'EQApproval';
+        parent::__construct($eQApprovalService, 'EQApproval', EQApprovalResource::class);
     }
 }
