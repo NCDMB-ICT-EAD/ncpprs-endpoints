@@ -16,14 +16,21 @@ class AuthUserResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'identifier' => $this->identifier,
             'name' => "{$this->firstname} {$this->surname}",
             'email' => $this->email,
             'role' => [
+                'id' => $this->role->id,
                 'name' => $this->role->name,
                 'label' => $this->role->label,
                 'pages' => $this->role->pages,
                 'permissions' => $this->role->permissions
             ],
+            'type' => $this->type,
+            'is_admin' => $this->is_admin == 1,
+            'blocked' => $this->blocked,
+            'change_password' => $this->change_password,
+            'avatar' => $this->avatar
         ];
     }
 }
