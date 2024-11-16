@@ -41,5 +41,9 @@ return [
     App\Providers\ResearchAccomodationServiceProvider::class,
     App\Providers\ResearchTeamServiceProvider::class,
     App\Providers\ResearchTeamDevelopmentServiceProvider::class,
-    App\Providers\PrincipalInvestigatorServiceProvider::class
+    App\Providers\PrincipalInvestigatorServiceProvider::class,
+    App\Providers\RoleServiceProvider::class,
+    App\Providers\SettingServiceProvider::class,
+    App\Providers\PageServiceProvider::class,
+    App\Providers\PermissionServiceProvider::class
 ];

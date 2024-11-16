@@ -8,7 +8,7 @@ class {{ class }}Service extends BaseService
 {
     public function __construct({{ class }}Repository ${{ camel }}Repository)
     {
-        $this->repository = ${{ camel }}Repository;
+        parent::__construct(${{ camel }}Repository);
     }
 
     public function rules($action = "store"): array

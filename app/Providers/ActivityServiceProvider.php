@@ -13,7 +13,7 @@ class ActivityServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         // Bind the ActivityRepository to ActivityService
         $this->app->bind(ActivityService::class, function ($app) {

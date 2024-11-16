@@ -16,11 +16,16 @@ return Application::configure(basePath: dirname(__DIR__))
             \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
         ]);
 
-        $middleware->alias([
-            'verified' => \App\Http\Middleware\EnsureEmailIsVerified::class,
+        $middleware->api(append: [
+            \App\Http\Middleware\Cors::class,
+            \App\Http\Middleware\ForceJsonResponse::class,
         ]);
 
-        //
+        $middleware->alias([
+            'verified' => \App\Http\Middleware\EnsureEmailIsVerified::class,
+            'cors' => \App\Http\Middleware\Cors::class,
+            'json.response' => \App\Http\Middleware\ForceJsonResponse::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
