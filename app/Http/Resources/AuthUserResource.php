@@ -24,12 +24,12 @@ class AuthUserResource extends JsonResource
                 'name' => $this->role->name,
                 'label' => $this->role->label,
                 'pages' => $this->role->pages,
-                'permissions' => $this->role->permissions
+                'permissions' => $this->role->permissions->pluck('label')->toArray(),
             ],
             'type' => $this->type,
             'is_admin' => $this->is_admin == 1,
-            'blocked' => $this->blocked,
-            'change_password' => $this->change_password,
+            'blocked' => $this->blocked == 1,
+            'change_password' => $this->change_password == 1,
             'avatar' => $this->avatar
         ];
     }

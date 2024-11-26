@@ -51,7 +51,7 @@ abstract class BaseController extends Controller
 
         } catch (\Exception $e) {
 
-            return $this->error(null, 'Server Error', 500);
+            return $this->error(null, $e->getMessage() ?? 'Server Error', 500);
 
         }
     }
@@ -71,7 +71,7 @@ abstract class BaseController extends Controller
     {
         try {
 
-            $validator = Validator::make($request->all(), $this->service->rules());
+            $validator = Validator::make($request->all(), $this->service->rules("update"));
 
             if ($validator->fails()) {
                 $error = new ValidationErrors($validator->errors());

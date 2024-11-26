@@ -28,17 +28,17 @@ class PageService extends BaseService
         $rules = [
             'parent_id' => 'required|integer|min:0',
             'name' => 'required|string|max:255',
-            'path' => 'sometimes|string|max:255',
+            'path' => 'required|string|max:255',
             'icon' => 'nullable|string|max:255',
-            'type' => 'required|string|max:255|in:index,view,form,external,dashboard,report',
+            'type' => 'required|string|max:255|in:top-level,index,view,form,external,dashboard,report,project',
             'description' => 'nullable|string|min:5',
             'roles' => 'required|array',
-            'is_menu' => 'sometimes|nullable|boolean',
-            'is_disabled' => 'sometimes|nullable|boolean',
+            'is_menu' => 'sometimes|integer|in:0,1',
+            'is_disabled' => 'sometimes|integer|in:0,1',
         ];
 
-        if ($action == "store") {
-            $rules['path'] .= '|unique:modules';
+        if ($action === "store") {
+            $rules['path'] .= '|unique:pages';
         }
 
         return $rules;
@@ -120,6 +120,18 @@ class PageService extends BaseService
             }
 
             return $page;
+        });
+    }
+
+    public function destroy(int $id)
+    {
+        return  DB::transaction(function () use ($id) {
+            $record = $this->repository->find($id);
+            $record->permissions()->delete();
+            $record->roles()->detach();
+            parent::destroy($id);
+
+            return true;
         });
     }
 }

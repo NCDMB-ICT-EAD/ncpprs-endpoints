@@ -17,8 +17,8 @@ class LifService extends Model
         return $this->hasMany(LifServiceCategory::class);
     }
 
-    public function lifInstitutionServices(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function activities(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(LifInstitutionService::class, 'lif_service_id');
+        return $this->hasMany(LifActivity::class);
     }
 }

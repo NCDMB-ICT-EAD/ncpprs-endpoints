@@ -20,7 +20,7 @@ class BoardProjectUtilizationService extends BaseService
             'period' => 'required|string|max:255',
             'capacity' => 'required|integer',
             'utilization' => 'required|integer',
-            'revenue' => 'required|string|max:255',
+            'revenue' => 'required',
         ];
     }
 }

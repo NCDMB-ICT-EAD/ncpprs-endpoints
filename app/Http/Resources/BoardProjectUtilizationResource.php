@@ -14,6 +14,9 @@ class BoardProjectUtilizationResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            ...parent::toArray($request),
+            'board_project_name' => $this->boardProject->title,
+        ];
     }
 }

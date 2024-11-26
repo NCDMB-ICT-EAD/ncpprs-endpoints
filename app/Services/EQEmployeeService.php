@@ -26,6 +26,7 @@ class EQEmployeeService extends BaseService
             'educational_qualifications' => "required|string|max:255",
             'professional_qualifications' => "required|string|max:255",
             'job_description' => "required|string|min:5",
+            'type' => "required|string|in:expatriate,understudy",
         ];
     }
 }

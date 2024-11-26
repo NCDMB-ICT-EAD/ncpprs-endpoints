@@ -16,11 +16,11 @@ class ProjectService extends BaseService
         return [
             'contractor_id' => 'required|integer|exists:companies,id',
             'title' => 'required|string|max:255',
-            'approval_date' => 'required|date',
+            'approval_date' => 'sometimes|nullable|date',
             'start_date' => 'required|date',
-            'completion_date' => 'required|date',
-            'nc_amount' => 'required',
-            'total_amount' => 'required',
+            'completion_date' => 'sometimes|nullable|date',
+            'nc_amount' => 'sometimes|numeric',
+            'total_amount' => 'required|numeric',
         ];
     }
 }

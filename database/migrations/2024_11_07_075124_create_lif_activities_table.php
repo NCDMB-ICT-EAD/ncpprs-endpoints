@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('lif_activities', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('lif_institution_service_id');
-            $table->foreign('lif_institution_service_id')->references('id')->on('lif_institution_services')->onDelete('cascade');
+            $table->unsignedBigInteger('lif_institution_id');
+            $table->foreign('lif_institution_id')->references('id')->on('lif_institutions')->onDelete('cascade');
+            $table->unsignedBigInteger('lif_service_id');
+            $table->foreign('lif_service_id')->references('id')->on('lif_services')->onDelete('cascade');
+            $table->unsignedBigInteger('contractor_id');
+            $table->foreign('contractor_id')->references('id')->on('companies')->onDelete('cascade');
             $table->unsignedBigInteger('broker_id');
             $table->foreign('broker_id')->references('id')->on('brokers')->onDelete('cascade');
             $table->decimal('amount', 30, 2)->default(0);

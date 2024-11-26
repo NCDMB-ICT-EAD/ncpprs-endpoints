@@ -15,7 +15,7 @@ class RenderedServiceService extends BaseService
     {
         return [
             'project_id' => 'required|integer|exists:projects,id',
-            'vendor_id' => 'required|integer|exists:vendors,id',
+            'contractor_id' => 'required|integer|exists:companies,id',
             'service_type_id' => 'required|integer|exists:service_types,id',
             'service_description' => 'nullable|string|min:5',
             'year' => 'required|integer|digits:4',

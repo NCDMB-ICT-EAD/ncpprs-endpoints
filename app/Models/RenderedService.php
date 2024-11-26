@@ -18,9 +18,9 @@ class RenderedService extends Model
         return $this->belongsTo(Project::class);
     }
 
-    public function vendor(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function contractor(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Vendor::class);
+        return $this->belongsTo(Company::class, 'contractor_id');
     }
 
     public function serviceType(): \Illuminate\Database\Eloquent\Relations\BelongsTo

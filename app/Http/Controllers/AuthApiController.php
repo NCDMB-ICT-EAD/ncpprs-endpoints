@@ -45,13 +45,14 @@ class AuthApiController extends BaseController
         return $this->success(['token' => $token, 'staff' => new $this->jsonResource(Auth::user())], 'You have logged in successfully!!');
     }
 
-    public function logout(): \Illuminate\Http\JsonResponse
+    public function logout(Request $request): \Illuminate\Http\JsonResponse
     {
-        Auth::user()->tokens()->delete();
+        $request->user()->tokens()->delete();
 
         return $this->success([
             'data' => null,
             'message' => 'You have successfully been logged out',
+            'status' => 'success'
         ]);
     }
 }

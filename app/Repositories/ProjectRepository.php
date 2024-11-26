@@ -15,8 +15,9 @@ class ProjectRepository extends BaseRepository
     {
         return [
             ...$data,
-            Carbon::parse($data['start_date']),
-            Carbon::parse($data['completion_date']),
+            'start_date' => Carbon::parse($data['start_date']),
+            'completion_date' => isset($data['completion_date']) ? Carbon::parse($data['completion_date']) : null,
+            'approval_date' => isset($data['approval_date']) ? Carbon::parse($data['approval_date']) : null,
         ];
     }
 }

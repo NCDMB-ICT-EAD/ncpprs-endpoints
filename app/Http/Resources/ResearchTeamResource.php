@@ -14,6 +14,10 @@ class ResearchTeamResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            ...parent::toArray($request),
+            'research_project_title' => $this->rndProject->name,
+            'created_at' => $this->created_at->diffForHumans(),
+        ];
     }
 }

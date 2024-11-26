@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Permission;
+use Illuminate\Support\Str;
 
 class PermissionRepository extends BaseRepository
 {
@@ -12,6 +13,9 @@ class PermissionRepository extends BaseRepository
 
     public function parse(array $data): array
     {
-        return $data;
+        return [
+            ...$data,
+            'label' => Str::slug($data['name']),
+        ];
     }
 }

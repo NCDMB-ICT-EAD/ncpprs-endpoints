@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Schedule;
+use Illuminate\Support\Str;
 
 class ScheduleRepository extends BaseRepository
 {
@@ -12,6 +13,9 @@ class ScheduleRepository extends BaseRepository
 
     public function parse(array $data): array
     {
-        return $data;
+        return [
+            ...$data,
+            'slug' => Str::slug($data['name']),
+        ];
     }
 }

@@ -20,7 +20,7 @@ class RNDProjectService extends BaseService
             'research_field' => 'required|string|max:255',
             'research_topic' => 'required|string|max:255',
             'research_purpose' => 'required|string|min:5',
-            'research_duration' => 'required|string|max:255',
+            'research_duration' => 'nullable|string|max:255',
             'start_date' => 'nullable|date',
             'completion_date' => 'nullable|date',
             'no_of_nigerians' => 'required|integer|min:1',

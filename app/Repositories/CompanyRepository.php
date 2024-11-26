@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Company;
+use Illuminate\Support\Str;
 
 class CompanyRepository extends BaseRepository
 {
@@ -12,6 +13,9 @@ class CompanyRepository extends BaseRepository
 
     public function parse(array $data): array
     {
-        return $data;
+        return [
+            ...$data,
+            'slug' => Str::slug($data['name']),
+        ];
     }
 }

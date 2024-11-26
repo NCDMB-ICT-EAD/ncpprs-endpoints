@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserRepository extends BaseRepository
 {
@@ -12,6 +13,11 @@ class UserRepository extends BaseRepository
 
     public function parse(array $data): array
     {
-        return $data;
+        $password = strtolower($data['firstname']) . strtolower($data['surname']);
+
+        return [
+            ...$data,
+            'password' => isset($data['password']) ? Hash::make($data['password']) : Hash::make($password),
+        ];
     }
 }

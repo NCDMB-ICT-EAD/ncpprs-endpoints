@@ -14,7 +14,8 @@ class PermissionService extends BaseService
     public function rules($action = "store"): array
     {
         return [
-            //
+            'page_id' => 'required|integer|exists:pages,id',
+            'name' => 'required|string|max:255',
         ];
     }
 }

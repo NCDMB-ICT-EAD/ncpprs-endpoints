@@ -26,6 +26,7 @@ class EQSuccessionPlanService extends BaseService
             'description' => 'sometimes|string|min:3',
             'due_date' => 'sometimes|date',
             'remarks' => 'sometimes|string|min:3',
+            'status' => 'sometimes|nullable|string|max:255',
         ];
     }
 }

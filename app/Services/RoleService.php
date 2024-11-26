@@ -17,8 +17,8 @@ class RoleService extends BaseService
             'department_id' => 'required|integer|exists:departments,id',
             'name' => 'required|string|max:255',
             'max_slot' => 'required|integer',
-            'is_blocked' => 'sometimes|boolean',
-            'is_super_admin' => 'sometimes|boolean',
+            'is_blocked' => 'sometimes|integer|in:0,1',
+            'is_super_admin' => 'sometimes|integer|in:0,1',
         ];
     }
 }

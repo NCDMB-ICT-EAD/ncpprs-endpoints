@@ -12,11 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('roleables', function (Blueprint $table) {
-            $table->id();
             $table->unsignedBigInteger('role_id');
             $table->unsignedBigInteger('roleable_id');
             $table->string('roleable_type');
-            $table->timestamps();
         });
     }
 

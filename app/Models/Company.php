@@ -12,9 +12,14 @@ class Company extends Model
     protected $guarded = [''];
 
     // Model Relationships or Scope Here...
+    public function users(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(User::class);
+    }
+
     public function brokers(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Broker::class);
+        return $this->hasMany(Broker::class, 'contractor_id');
     }
 
     public function projects(): \Illuminate\Database\Eloquent\Relations\HasMany
@@ -32,14 +37,19 @@ class Company extends Model
         return $this->hasMany(EQApproval::class, 'contractor_id');
     }
 
-    public function lifInstitutionServices(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function lifActivities(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(LifInstitutionService::class, 'contractor_id');
+        return $this->hasMany(LifActivity::class);
     }
 
     public function procuredMaterials(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(ProcuredMaterial::class, 'contractor_id');
+    }
+
+    public function renderedServices(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(RenderedService::class, 'contractor_id');
     }
 
     public function scopes(): \Illuminate\Database\Eloquent\Relations\HasMany
@@ -55,5 +65,10 @@ class Company extends Model
     public function vesselUtilizations(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(VesselUtilization::class);
+    }
+
+    public function hcds(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Hcd::class);
     }
 }

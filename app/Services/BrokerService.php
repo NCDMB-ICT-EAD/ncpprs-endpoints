@@ -17,7 +17,7 @@ class BrokerService extends BaseService
             'contractor_id' => 'required|integer|exists:companies,id',
             'name' => "required|string",
             'address' => "required|string",
-            'phone' => "required|string",
+            'phone' => "required",
             'email' => "required|string|email|unique:brokers,email",
         ];
     }

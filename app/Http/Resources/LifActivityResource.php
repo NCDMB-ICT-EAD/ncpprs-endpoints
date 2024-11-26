@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Pack\Helpers\CurrencyFormatter;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -14,6 +15,11 @@ class LifActivityResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            ...parent::toArray($request),
+            'institution_name' => $this->lifInstitution->name,
+            'broker_name' => $this->broker->name,
+            'amount_formatted' => CurrencyFormatter::parse($this->amount)
+        ];
     }
 }

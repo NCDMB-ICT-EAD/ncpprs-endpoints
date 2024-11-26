@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('project_id');
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
-            $table->unsignedBigInteger('vendor_id');
-            $table->foreign('vendor_id')->references('id')->on('vendors')->onDelete('cascade');
+            $table->unsignedBigInteger('contractor_id');
+            $table->foreign('contractor_id')->references('id')->on('companies')->onDelete('cascade');
             $table->unsignedBigInteger('service_type_id');
             $table->foreign('service_type_id')->references('id')->on('service_types')->onDelete('cascade');
             $table->longText('service_description')->nullable();

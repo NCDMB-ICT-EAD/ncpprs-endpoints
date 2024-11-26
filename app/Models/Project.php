@@ -13,7 +13,7 @@ class Project extends Model
 
     // Model Relationships or Scope Here...
 
-    public function operator(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function contractor(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Company::class, 'contractor_id');
     }
@@ -31,5 +31,15 @@ class Project extends Model
     public function renderedServices(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(RenderedService::class);
+    }
+
+    public function hcds(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Hcd::class);
+    }
+
+    public function procuredMaterials(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(ProcuredMaterial::class);
     }
 }

@@ -4,17 +4,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-    return $request->user();
+    return new \App\Http\Resources\AuthUserResource($request->user());
 });
 
 Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::post('/login', [\App\Http\Controllers\AuthApiController::class, 'login']);
 
     Route::middleware('auth:sanctum')->group(function () {
+        Route::post('/logout', [\App\Http\Controllers\AuthApiController::class, 'logout']);
+
+        Route::get('capacityBuildings/cdis', [\App\Http\Controllers\CapacityBuildingController::class, 'cdis']);
+        Route::get('capacityBuildings/hcds', [\App\Http\Controllers\CapacityBuildingController::class, 'hcds']);
+
+        // Resource Routes
         Route::apiResource('activities', \App\Http\Controllers\ActivityController::class);
         Route::apiResource('boardProjects', \App\Http\Controllers\BoardProjectController::class);
         Route::apiResource('boardProjectActivities', \App\Http\Controllers\BoardProjectActivityController::class);
         Route::apiResource('boardProjectUtilizations', \App\Http\Controllers\BoardProjectUtilizationController::class);
+        Route::apiResource('dashboardCards', \App\Http\Controllers\DashboardCardController::class);
         Route::apiResource('brokers', \App\Http\Controllers\BrokerController::class);
         Route::apiResource('cDActivities', \App\Http\Controllers\CDActivityController::class);
         Route::apiResource('companies', \App\Http\Controllers\CompanyController::class);
@@ -26,7 +33,6 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
         Route::apiResource('eQSuccessionPlans', \App\Http\Controllers\EQSuccessionPlanController::class);
         Route::apiResource('lifActivities', \App\Http\Controllers\LifActivityController::class);
         Route::apiResource('lifInstitutions', \App\Http\Controllers\LifInstitutionController::class);
-        Route::apiResource('lifInstitutionServices', \App\Http\Controllers\LifInstitutionServiceController::class);
         Route::apiResource('lifServiceCategories', \App\Http\Controllers\LifServiceCategoryController::class);
         Route::apiResource('lifServices', \App\Http\Controllers\LifServiceController::class);
         Route::apiResource('materialTypes', \App\Http\Controllers\MaterialTypeController::class);
@@ -48,12 +54,15 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
         Route::apiResource('researchTeams', \App\Http\Controllers\ResearchTeamController::class);
         Route::apiResource('researchTeamDevelopments', \App\Http\Controllers\ResearchTeamDevelopmentController::class);
         Route::apiResource('reviews', \App\Http\Controllers\ReviewController::class);
-        Route::apiResource('rNDProjects', \App\Http\Controllers\RNDProjectController::class);
+        Route::apiResource('rndProjects', \App\Http\Controllers\RNDProjectController::class);
         Route::apiResource('schedules', \App\Http\Controllers\ScheduleController::class);
         Route::apiResource('serviceTypes', \App\Http\Controllers\ServiceTypeController::class);
         Route::apiResource('settings', \App\Http\Controllers\SettingController::class);
-        Route::apiResource('vendors', \App\Http\Controllers\VendorController::class);
         Route::apiResource('vessels', \App\Http\Controllers\VesselController::class);
         Route::apiResource('vesselUtilizations', \App\Http\Controllers\VesselUtilizationController::class);
+        Route::apiResource('hcds', \App\Http\Controllers\HcdController::class);
+        Route::apiResource('hcdActivities', \App\Http\Controllers\HcdActivityController::class);
+        Route::apiResource('capacityBuildings', \App\Http\Controllers\CapacityBuildingController::class);
+        Route::apiResource('capacityBuildingActivities', \App\Http\Controllers\CapacityBuildingActivityController::class);
     });
 });

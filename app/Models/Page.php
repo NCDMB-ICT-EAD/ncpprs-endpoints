@@ -12,11 +12,14 @@ class Page extends Model
     protected $guarded = [''];
 
     // Model Relationships or Scope Here...
+    public function dashboards(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(DashboardCard::class);
+    }
     public function permissions(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Permission::class);
     }
-
     public function roles(): \Illuminate\Database\Eloquent\Relations\MorphToMany
     {
         return $this->morphToMany(Role::class, 'roleable');

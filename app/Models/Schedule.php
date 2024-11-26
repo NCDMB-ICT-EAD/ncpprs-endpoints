@@ -17,4 +17,14 @@ class Schedule extends Model
     {
         return $this->hasMany(ProjectScope::class);
     }
+
+    public function hcds(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Hcd::class);
+    }
+
+    public function activities(): \Illuminate\Database\Eloquent\Relations\HasManyThrough
+    {
+        return $this->hasManyThrough(Activity::class, ProjectScope::class);
+    }
 }

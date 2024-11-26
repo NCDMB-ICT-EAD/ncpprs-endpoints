@@ -14,6 +14,9 @@ class LifServiceCategoryResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            ...parent::toArray($request),
+            'lif_service_name' => $this->lifService->name,
+        ];
     }
 }

@@ -18,7 +18,6 @@ return [
     App\Providers\LifServiceServiceProvider::class,
     App\Providers\LifServiceCategoryServiceProvider::class,
     App\Providers\LifInstitutionServiceProvider::class,
-    App\Providers\LifInstitutionServiceServiceProvider::class,
     App\Providers\BrokerServiceProvider::class,
     App\Providers\LifActivityServiceProvider::class,
     App\Providers\VesselServiceProvider::class,
@@ -26,7 +25,6 @@ return [
     App\Providers\EQSuccessionPlanServiceProvider::class,
     App\Providers\MaterialTypeServiceProvider::class,
     App\Providers\ServiceTypeServiceProvider::class,
-    App\Providers\VendorServiceProvider::class,
     App\Providers\ProcuredMaterialServiceProvider::class,
     App\Providers\RenderedServiceServiceProvider::class,
     App\Providers\RNDProjectServiceProvider::class,
@@ -45,5 +43,10 @@ return [
     App\Providers\RoleServiceProvider::class,
     App\Providers\SettingServiceProvider::class,
     App\Providers\PageServiceProvider::class,
-    App\Providers\PermissionServiceProvider::class
+    App\Providers\PermissionServiceProvider::class,
+    App\Providers\HcdServiceProvider::class,
+    App\Providers\HcdActivityServiceProvider::class,
+    App\Providers\CapacityBuildingServiceProvider::class,
+    App\Providers\CapacityBuildingActivityServiceProvider::class,
+    App\Providers\DashboardCardServiceProvider::class
 ];

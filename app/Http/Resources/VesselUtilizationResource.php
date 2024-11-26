@@ -14,6 +14,10 @@ class VesselUtilizationResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            ...parent::toArray($request),
+            'vessel_name' => $this->vessel->name,
+            'contractor_name' => $this->contractor->name
+        ];
     }
 }

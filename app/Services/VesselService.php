@@ -13,12 +13,19 @@ class VesselService extends BaseService
 
     public function rules($action = "store"): array
     {
-        return [
+        $rules = [
             'name' => 'required|string|max:255',
             'vessel_type' => 'required|string|max:255',
-            'imo_no' => 'nullable|string|max:255|unique:vessels,imo_no',
-            'nimasa_reg_no' => 'nullable|string|max:255|unique:vessels,nimasa_reg_no',
+            'imo_no' => 'nullable|string|max:255',
+            'nimasa_reg_no' => 'nullable|string|max:255',
             'flagging' => 'nullable|string|max:255',
         ];
+
+        if ($action === "store") {
+            $rules['imo_no'] .= '|unique:vessels,imo_no';
+            $rules['nimasa_reg_no'] .= '|unique:vessels,nimasa_reg_no';
+        }
+
+        return $rules;
     }
 }

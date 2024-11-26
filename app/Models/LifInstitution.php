@@ -12,8 +12,8 @@ class LifInstitution extends Model
     protected $guarded = [''];
 
     // Model Relationships or Scope Here...
-    public function lifInstitutionServices(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function activities(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(LifInstitutionService::class, 'lif_institution_id');
+        return $this->hasMany(LifActivity::class);
     }
 }

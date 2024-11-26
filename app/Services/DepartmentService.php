@@ -17,6 +17,7 @@ class DepartmentService extends BaseService
             'name' => 'required|string|max:255',
             'abv' => 'required|string|max:255|unique:departments',
             'category' => 'required|string|max:255|in:unit,department,division,directorate',
+            'parent_id' => 'sometimes|integer|min:0',
         ];
     }
 }

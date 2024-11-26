@@ -18,8 +18,6 @@ class PageRepository extends BaseRepository
         return [
             ...$data,
             'label' => Str::slug($data['name']),
-            'is_menu' => $data['is_menu'] ?? false,
-            'is_disabled' => $data['is_disabled'] ?? false,
             'description' => $data['description'] ?? null,
             'icon' => $data['icon'] ?? null,
         ];

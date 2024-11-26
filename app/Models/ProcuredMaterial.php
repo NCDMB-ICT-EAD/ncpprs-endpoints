@@ -22,8 +22,8 @@ class ProcuredMaterial extends Model
         return $this->belongsTo(MaterialType::class, 'material_type_id');
     }
 
-    public function vendor(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function project(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Vendor::class, 'vendor_id');
+        return $this->belongsTo(Project::class, 'project_id');
     }
 }

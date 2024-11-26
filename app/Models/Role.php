@@ -12,6 +12,10 @@ class Role extends Model
     protected $guarded = [''];
 
     // Model Relationships or Scope Here...
+    public function dashboardCards(): \Illuminate\Database\Eloquent\Relations\MorphToMany
+    {
+        return $this->morphedByMany(DashboardCard::class, 'roleable');
+    }
     public function department(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Department::class, 'department_id');

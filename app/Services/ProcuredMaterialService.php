@@ -15,7 +15,7 @@ class ProcuredMaterialService extends BaseService
     {
         return [
             'contractor_id' => 'required|integer|exists:companies,id',
-            'vendor_id' => 'required|integer|exists:vendors,id',
+            'project_id' => 'required|integer|exists:projects,id',
             'material_type_id' => 'required|integer|exists:material_types,id',
             'item_description' => 'nullable|string|min:5',
             'quantity' => 'required|integer|min:1',

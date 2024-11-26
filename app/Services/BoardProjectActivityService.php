@@ -19,9 +19,10 @@ class BoardProjectActivityService extends BaseService
             'year' => 'required|integer',
             'period' => 'required|string|max:255',
             'no_of_personnel' => 'required|integer',
-            'man_hours' => 'required|string|max:255',
+            'man_hours' => 'required|integer',
             'amount_spent' => 'required',
             'remarks' => 'required|string',
+            'status' => 'required|string|max:255',
         ];
     }
 }
