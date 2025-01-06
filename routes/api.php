@@ -7,6 +7,19 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return new \App\Http\Resources\AuthUserResource($request->user());
 });
 
+Route::prefix('reports')->group(function () {
+    Route::controller(\App\Http\Controllers\ReportController::class)->group(function () {
+        Route::get('project-details/{projectId}', 'projectDetails');
+        Route::get('yearly-project-performance', 'yearlyProjectPerformance');
+        Route::get('contractor-project-status', 'contractorProjectStatus');
+
+        Route::get('board-project-summary', 'boardProjectSummary');
+        Route::get('department-board-project-status', 'departmentBoardProjectStatus');
+
+    });
+});
+
+
 Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::post('/login', [\App\Http\Controllers\AuthApiController::class, 'login']);
 
