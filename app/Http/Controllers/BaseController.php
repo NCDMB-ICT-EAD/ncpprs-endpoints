@@ -35,7 +35,7 @@ abstract class BaseController extends Controller
     public function store(Request $request): \Illuminate\Http\JsonResponse
     {
         try {
-            $validator = Validator::make($request->all(), $this->service->rules());
+            $validator = Validator::make($request->all(), $this->service->rules(), $this->service->messages());
 
             if ($validator->fails()) {
                 $error = new ValidationErrors($validator->errors());

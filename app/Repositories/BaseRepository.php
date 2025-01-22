@@ -3,16 +3,18 @@
 namespace App\Repositories;
 
 
-use App\Handlers\CodeGenerationErrorException;
 use App\Handlers\DataNotFound;
-use App\Handlers\RecordCreationUnsuccessful;
 use App\Interfaces\IRepository;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
+use App\Handlers\RecordCreationUnsuccessful;
+use App\Handlers\CodeGenerationErrorException;
 
 abstract class BaseRepository implements IRepository
 {
     protected $model;
+    protected $relations = [];
 
     public function __construct(Model $model)
     {
@@ -24,7 +26,7 @@ abstract class BaseRepository implements IRepository
     public function all()
     {
         try {
-            return $this->model->latest()->get();
+            return $this->model->with($this->relations)->latest()->get();
         } catch (\Exception $e) {
             throw new \Exception('Error fetching collection: ' . $e->getMessage());
         }
@@ -33,7 +35,7 @@ abstract class BaseRepository implements IRepository
     public function find($id)
     {
         try {
-            $record = $this->model->find($id);
+            $record = $this->model->with($this->relations)->find($id);
             if (!$record) {
                 throw new DataNotFound();
             }
@@ -46,13 +48,24 @@ abstract class BaseRepository implements IRepository
     public function create(array $data)
     {
         try {
-            $record = $this->model->create($this->parse($data));
+            return DB::transaction(function () use ($data) {
+                $record = $this->model->create($this->parse($data));
 
-            if (!$record) {
-                throw new RecordCreationUnsuccessful();
-            }
+                if (!$record) {
+                    throw new RecordCreationUnsuccessful("Main record creation failed.");
+                }
 
-            return $record;
+                foreach ($this->relations as $relation) {
+                    if (method_exists($record, $relation)) {
+                        $record->{$relation}()->createMany($data[$relation]);
+                    } else {
+                        \Log::info("Relation '{$relation}' does not exist on the model.");
+                        throw new \Exception("Relation '{$relation}' does not exist on the model.");
+                    }
+                }
+
+                return $record;
+            });
         } catch (\Exception $e) {
             throw new \Exception('Error creating record: ' . $e->getMessage());
         }
@@ -61,15 +74,25 @@ abstract class BaseRepository implements IRepository
     public function update(int $id, array $data)
     {
         try {
-            $record = $this->find($id);
+            return DB::transaction(function () use ($id, $data) {
+                $record = $this->model->findOrFail($id);
 
-            if (!$record) {
-                throw new DataNotFound();
-            }
+                if (!$record->update($this->parse($data))) {
+                    throw new \Exception("Failed to update the main record.");
+                }
 
-            $record->update($data);
+                foreach ($this->relations as $relation) {
+                    if (method_exists($record, $relation)) {
+                        $relationModel = $record->{$relation}();
+                        $relationModel->delete();
+                        $relationModel->createMany($data[$relation]);
+                    } else {
+                        throw new \Exception("Relation '{$relation}' does not exist on the model.");
+                    }
+                }
 
-            return $record;
+                return $record;
+            });
         } catch (\Exception $e) {
             throw new \Exception('Error updating record: ' . $e->getMessage());
         }
@@ -78,13 +101,23 @@ abstract class BaseRepository implements IRepository
     public function destroy($id): bool
     {
         try {
-            $record = $this->find($id);
+            return DB::transaction(function () use ($id) {
+                $resource = $this->model->findOrFail($id);
 
-            if (!$record) {
-                throw new DataNotFound();
-            }
+                foreach ($this->relations as $relation) {
+                    if (method_exists($resource, $relation)) {
+                        $resource->{$relation}()->delete();
+                    } else {
+                        throw new \Exception("Relation '{$relation}' does not exist on the model.");
+                    }
+                }
 
-            return $record->delete();
+                if (!$resource->delete()) {
+                    throw new \Exception("Failed to delete the main record.");
+                }
+
+                return true;
+            });
         } catch (\Exception $e) {
             throw new \Exception('Error deleting record: ' . $e->getMessage());
         }

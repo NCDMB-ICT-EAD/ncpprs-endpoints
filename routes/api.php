@@ -15,9 +15,10 @@ Route::prefix('reports')->group(function () {
 
         Route::get('board-project-summary', 'boardProjectSummary');
         Route::get('department-board-project-status', 'departmentBoardProjectStatus');
-
     });
 });
+// New Routes
+Route::apiResource('projectSubmissions', \App\Http\Controllers\ProjectSubmissionController::class);
 
 
 Route::group(['middleware' => ['cors', 'json.response']], function () {

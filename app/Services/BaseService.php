@@ -87,4 +87,14 @@ abstract class BaseService implements IService
     }
 
     abstract public function rules($action = "store");
+
+    public function messages(): array
+    {
+        return [];
+    }
+
+    public function getRelations(): array
+    {
+        return [];
+    }
 }
