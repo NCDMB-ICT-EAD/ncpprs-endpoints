@@ -19,6 +19,10 @@ Route::prefix('reports')->group(function () {
 });
 // New Routes
 Route::apiResource('projectSubmissions', \App\Http\Controllers\ProjectSubmissionController::class);
+Route::apiResource('lifSubmissions', \App\Http\Controllers\LifSubmissionController::class);
+Route::apiResource('employments', \App\Http\Controllers\EmploymentController::class);
+Route::apiResource('trainingCategories', \App\Http\Controllers\TrainingCategoryController::class);
+Route::apiResource('trainings', \App\Http\Controllers\TrainingController::class);
 
 
 Route::group(['middleware' => ['cors', 'json.response']], function () {

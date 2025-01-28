@@ -71,4 +71,14 @@ class Company extends Model
     {
         return $this->hasMany(Hcd::class);
     }
+
+    public function lifSubmissions(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(LifSubmission::class);
+    }
+
+    public function employments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Employment::class);
+    }
 }

@@ -14,7 +14,6 @@ class BrokerService extends BaseService
     public function rules($action = "store"): array
     {
         return [
-            'contractor_id' => 'required|integer|exists:companies,id',
             'name' => "required|string",
             'address' => "required|string",
             'phone' => "required",

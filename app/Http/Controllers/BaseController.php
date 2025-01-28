@@ -71,7 +71,7 @@ abstract class BaseController extends Controller
     {
         try {
 
-            $validator = Validator::make($request->all(), $this->service->rules("update"));
+            $validator = Validator::make($request->all(), $this->service->rules("update"), $this->service->messages());
 
             if ($validator->fails()) {
                 $error = new ValidationErrors($validator->errors());

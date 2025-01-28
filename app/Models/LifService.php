@@ -21,4 +21,9 @@ class LifService extends Model
     {
         return $this->hasMany(LifActivity::class);
     }
+
+    public function lifSubmissions(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(LifSubmission::class);
+    }
 }

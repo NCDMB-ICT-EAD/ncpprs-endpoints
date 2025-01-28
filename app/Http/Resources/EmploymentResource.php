@@ -2,10 +2,11 @@
 
 namespace App\Http\Resources;
 
+use App\Pack\Helpers\CurrencyFormatter;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class BrokerResource extends JsonResource
+class EmploymentResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,7 +16,7 @@ class BrokerResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            ...parent::toArray($request),
+            ...parent::toArray($request)
         ];
     }
 }

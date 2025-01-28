@@ -12,23 +12,23 @@ class LifActivity extends Model
     protected $guarded = [''];
 
     // Model Relationships or Scope Here...
+    public function lifSubmission(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(LifSubmission::class);
+    }
+
+    public function lifServiceCategories(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->BelongsTo(LifServiceCategory::class);
+    }
+
     public function lifInstitution(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(LifInstitution::class, 'lif_institution_id');
-    }
-
-    public function lifService(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-    {
-        return $this->belongsTo(LifService::class, 'lif_service_id');
-    }
-
-    public function contractor(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-    {
-        return $this->belongsTo(Company::class, 'contractor_id');
+        return $this->belongsTo(LifInstitution::class);
     }
 
     public function broker(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Broker::class, 'broker_id');
+        return $this->belongsTo(Broker::class);
     }
 }

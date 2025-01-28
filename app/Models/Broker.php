@@ -12,13 +12,8 @@ class Broker extends Model
     protected $guarded = [''];
 
     // Model Relationships or Scope Here...
-    public function contractor(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-    {
-        return $this->belongsTo(Company::class, 'contractor_id');
-    }
-
     public function lifActivities(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(LifActivity::class, 'broker_id');
+        return $this->hasMany(LifActivity::class);
     }
 }

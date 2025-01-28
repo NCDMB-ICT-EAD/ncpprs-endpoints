@@ -17,4 +17,9 @@ class LifServiceCategory extends Model
     {
         return $this->belongsTo(LifService::class);
     }
+
+    public function lifActivities(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(LifActivity::class);
+    }
 }

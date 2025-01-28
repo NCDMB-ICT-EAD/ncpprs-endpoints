@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LifInstitution extends Model
+class Employment extends Model
 {
     use HasFactory;
 
     protected $guarded = [''];
 
     // Model Relationships or Scope Here...
-    public function lifActivities(): \Illuminate\Database\Eloquent\Relations\HasMany
+
+    public function company(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->hasMany(LifActivity::class);
+        return $this->belongsTo(Company::class);
     }
 }

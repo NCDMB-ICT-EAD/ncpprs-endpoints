@@ -16,6 +16,11 @@ class Periods
         '2nd Half (H2)',
     ];
 
+    public const TIMEFRAMES = [
+        'Past 6 months',
+        'Next 6 months',
+    ];
+
     public const MONTHS = [
         'January',
         'February',

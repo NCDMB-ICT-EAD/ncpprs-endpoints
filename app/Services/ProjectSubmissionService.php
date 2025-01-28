@@ -15,8 +15,6 @@ class ProjectSubmissionService extends BaseService
 
     public function rules($action = "store"): array
     {
-        $periods = Periods::QUARTERS;
-
         $id = "NULL";
         if ($action === "update") {
             $id = request()->route('projectSubmission');
@@ -28,7 +26,7 @@ class ProjectSubmissionService extends BaseService
         return [
             'project_id' => 'required|integer|exists:projects,id|' . $uniqueRule,
             'year' => 'required|integer|between:2010,' . now()->year,
-            'period' => 'required|string|in:' . implode(',', $periods),
+            'period' => 'required|string|in:' . implode(',', Periods::QUARTERS),
             'activities' => 'required|array',
             'activities.*.project_scope_id' => 'required|exists:project_scopes,id',
             'activities.*.description' => 'nullable|string',
@@ -41,7 +39,7 @@ class ProjectSubmissionService extends BaseService
         ];
     }
 
-    public function messages($action = "store"): array
+    public function messages(): array
     {
         return [
             'project_id.unique' => 'Another record already exists with same project ID, year, and period combination.',
