@@ -7,6 +7,7 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return new \App\Http\Resources\AuthUserResource($request->user());
 });
 
+// New Routes
 Route::prefix('reports')->group(function () {
     Route::controller(\App\Http\Controllers\ReportController::class)->group(function () {
         Route::get('project-details/{projectId}', 'projectDetails');
@@ -17,7 +18,6 @@ Route::prefix('reports')->group(function () {
         Route::get('department-board-project-status', 'departmentBoardProjectStatus');
     });
 });
-// New Routes
 Route::apiResource('projectSubmissions', \App\Http\Controllers\ProjectSubmissionController::class);
 Route::apiResource('lifSubmissions', \App\Http\Controllers\LifSubmissionController::class);
 Route::apiResource('employments', \App\Http\Controllers\EmploymentController::class);
