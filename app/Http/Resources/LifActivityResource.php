@@ -19,7 +19,8 @@ class LifActivityResource extends JsonResource
             ...parent::toArray($request),
             'institution_name' => $this->lifInstitution->name,
             'broker_name' => $this->broker->name,
-            'amount_formatted' => CurrencyFormatter::parse($this->amount)
+            'amount_formatted' => CurrencyFormatter::parse($this->amount),
+            'service_label' => $this->lifService->label,
         ];
     }
 }

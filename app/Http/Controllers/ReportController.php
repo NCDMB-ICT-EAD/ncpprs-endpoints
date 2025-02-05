@@ -11,7 +11,7 @@ class ReportController extends Controller
     use ApiResponse;
     public function __construct(protected ReportService $reportService){}
 
-    public function handleRequest(callable $callback)
+    public function handleRequest(callable $callback): \Illuminate\Http\JsonResponse
     {
         try {
             $data = $callback();
@@ -21,27 +21,27 @@ class ReportController extends Controller
         }
     }
 
-    public function projectDetails($projectId)
+    public function projectDetails($projectId): \Illuminate\Http\JsonResponse
     {
         return $this->handleRequest(fn() => $this->reportService->projectDetails($projectId));
     }
 
-    public function yearlyProjectPerformance(Request $request)
+    public function yearlyProjectPerformance(Request $request): \Illuminate\Http\JsonResponse
     {
         return $this->handleRequest(fn() => $this->reportService->yearlyProjectPerformance($request->input('year')));
     }
 
-    public function contractorProjectStatus()
+    public function contractorProjectStatus(): \Illuminate\Http\JsonResponse
     {
         return $this->handleRequest(fn() => $this->reportService->contractorProjectStatus());
     }
 
-    public function boardProjectSummary()
+    public function boardProjectSummary(): \Illuminate\Http\JsonResponse
     {
         return $this->handleRequest(fn() => $this->reportService->boardProjectSummary());
     }
 
-    public function departmentBoardProjectStatus()
+    public function departmentBoardProjectStatus(): \Illuminate\Http\JsonResponse
     {
         return $this->handleRequest(fn() => $this->reportService->departmentBoardProjectStatus());
     }

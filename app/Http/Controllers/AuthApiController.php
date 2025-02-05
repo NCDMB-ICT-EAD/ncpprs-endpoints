@@ -26,7 +26,7 @@ class AuthApiController extends BaseController
             return $this->error($validation->errors(), 'Please fix the following errors: ', 401);
         }
 
-        $username = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'staff_no';
+        $username = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'identifier';
 
         // if validation passed gather login credentials
         $credentials = [
