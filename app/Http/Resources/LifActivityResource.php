@@ -20,7 +20,7 @@ class LifActivityResource extends JsonResource
             'institution_name' => $this->lifInstitution->name,
             'broker_name' => $this->broker->name,
             'amount_formatted' => CurrencyFormatter::parse($this->amount),
-            'service_label' => $this->lifService->label,
+            'service_label' => $this->lifServiceCategories?->lifService?->label,
         ];
     }
 }
