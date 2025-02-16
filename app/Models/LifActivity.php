@@ -17,9 +17,9 @@ class LifActivity extends Model
         return $this->belongsTo(LifSubmission::class);
     }
 
-    public function lifServiceCategories(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function lifServiceCategory(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->BelongsTo(LifServiceCategory::class);
+        return $this->belongsTo(LifServiceCategory::class);
     }
 
     public function lifInstitution(): \Illuminate\Database\Eloquent\Relations\BelongsTo
