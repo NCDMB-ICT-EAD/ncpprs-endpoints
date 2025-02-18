@@ -55,14 +55,14 @@ abstract class BaseRepository implements IRepository
                     throw new RecordCreationUnsuccessful("Main record creation failed.");
                 }
 
-                foreach ($this->relations as $relation) {
-                    if (method_exists($record, $relation)) {
-                        $record->{$relation}()->createMany($data[$relation]);
-                    } else {
-                        \Log::info("Relation '{$relation}' does not exist on the model.");
-                        throw new \Exception("Relation '{$relation}' does not exist on the model.");
-                    }
-                }
+                // foreach ($this->relations as $relation) {
+                //     if (method_exists($record, $relation)) {
+                //         $record->{$relation}()->createMany($data[$relation]);
+                //     } else {
+                //         \Log::info("Relation '{$relation}' does not exist on the model.");
+                //         throw new \Exception("Relation '{$relation}' does not exist on the model.");
+                //     }
+                // }
 
                 return $record;
             });
@@ -81,15 +81,15 @@ abstract class BaseRepository implements IRepository
                     throw new \Exception("Failed to update the main record.");
                 }
 
-                foreach ($this->relations as $relation) {
-                    if (method_exists($record, $relation)) {
-                        $relationModel = $record->{$relation}();
-                        $relationModel->delete();
-                        $relationModel->createMany($data[$relation]);
-                    } else {
-                        throw new \Exception("Relation '{$relation}' does not exist on the model.");
-                    }
-                }
+                // foreach ($this->relations as $relation) {
+                //     if (method_exists($record, $relation)) {
+                //         $relationModel = $record->{$relation}();
+                //         $relationModel->delete();
+                //         $relationModel->createMany($data[$relation]);
+                //     } else {
+                //         throw new \Exception("Relation '{$relation}' does not exist on the model.");
+                //     }
+                // }
 
                 return $record;
             });
@@ -104,13 +104,13 @@ abstract class BaseRepository implements IRepository
             return DB::transaction(function () use ($id) {
                 $resource = $this->model->findOrFail($id);
 
-                foreach ($this->relations as $relation) {
-                    if (method_exists($resource, $relation)) {
-                        $resource->{$relation}()->delete();
-                    } else {
-                        throw new \Exception("Relation '{$relation}' does not exist on the model.");
-                    }
-                }
+                // foreach ($this->relations as $relation) {
+                //     if (method_exists($resource, $relation)) {
+                //         $resource->{$relation}()->delete();
+                //     } else {
+                //         throw new \Exception("Relation '{$relation}' does not exist on the model.");
+                //     }
+                // }
 
                 if (!$resource->delete()) {
                     throw new \Exception("Failed to delete the main record.");
