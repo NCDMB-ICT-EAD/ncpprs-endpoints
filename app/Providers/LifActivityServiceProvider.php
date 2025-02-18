@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Repositories\LifSubmissionRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\LifActivityRepository;
 use App\Services\LifActivityService;
@@ -17,7 +18,9 @@ class LifActivityServiceProvider extends ServiceProvider
     {
         // Bind the LifActivityRepository to LifActivityService
         $this->app->bind(LifActivityService::class, function ($app) {
-            return new LifActivityService($app->make(LifActivityRepository::class));
+            $lifActivityRepository = $app->make(LifActivityRepository::class);
+            $lifSubmissionRepository = $app->make(LifSubmissionRepository::class);
+            return new LifActivityService($lifActivityRepository, $lifSubmissionRepository);
         });
     }
 }

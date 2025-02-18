@@ -15,8 +15,7 @@ class CompanyResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            ...parent::toArray($request),
-            'brokers' => $this->brokers
+            ...parent::toArray($request)
         ];
     }
 }

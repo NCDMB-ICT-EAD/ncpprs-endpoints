@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use App\Pack\Helpers\CurrencyFormatter;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 class LifActivityResource extends JsonResource
 {
@@ -20,7 +21,9 @@ class LifActivityResource extends JsonResource
             'institution_name' => $this->lifInstitution->name,
             'broker_name' => $this->broker->name,
             'amount_formatted' => CurrencyFormatter::parse($this->amount),
-            'service_label' => $this->lifServiceCategories?->lifService?->label,
+            'service_label' => $this->lifServiceCategory->lifService?->label,
+            'category' => $this->lifServiceCategory->name,
+            'classification' => ucwords(str_replace('-', ' ', $this->lifInstitution->classification))
         ];
     }
 }
