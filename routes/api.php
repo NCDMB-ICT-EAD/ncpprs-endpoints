@@ -18,6 +18,7 @@ Route::prefix('reports')->group(function () {
         Route::get('department-board-project-status', 'departmentBoardProjectStatus');
     });
 });
+
 Route::apiResource('projectSubmissions', \App\Http\Controllers\ProjectSubmissionController::class);
 Route::apiResource('lifSubmissions', \App\Http\Controllers\LifSubmissionController::class);
 Route::apiResource('employments', \App\Http\Controllers\EmploymentController::class);
